@@ -2,7 +2,7 @@
     "name": "Webhook",
     "url": "https://github.com/PostHog/webhook-plugin",
     "description": "Send a webhook",
-    "main": "index.tsx",
+    "main": "index.ts",
     "config": [
         {
             "key": "url",
