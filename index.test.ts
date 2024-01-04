@@ -13,7 +13,7 @@ test('creates the correct webhook body', async () => {
             prop: 'value',
         },
     }
-    const webhook: Webhook = composeWebhook(event, { config: { webhook_url: 'https://example.com' } })
+    const webhook: Webhook = composeWebhook(event, { config: { url: 'https://example.com' } })
     expect(webhook).toEqual({
         url: 'https://example.com',
         body: '{"uuid":"123","team_id":1,"distinct_id":"alice","event":"pageview","timestamp":"2023-01-01T00:00:00.000Z","properties":{"prop":"value"}}',
