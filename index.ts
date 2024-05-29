@@ -1,14 +1,13 @@
 import { PostHogEvent, Webhook } from '@posthog/plugin-scaffold'
 
 export function composeWebhook(event: PostHogEvent, { config }: any): Webhook {
-    // TODO: ignore if doesn't match event filters
-    // TODO: user defining body
     return {
         url: config.url,
-        body: JSON.stringify(event),
+        body: JSON.stringify(config.payload || event),
         headers: {
             'Content-Type': 'application/json',
+            ...config.headers,
         },
-        method: 'POST',
+        method: config.method || 'POST',
     }
 }

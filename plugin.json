@@ -1,6 +1,6 @@
 {
     "name": "Webhook",
-    "url": "https://github.com/PostHog/webhook-plugin",
+    "url": "https://github.com/PostHog/new-webhook-plugin",
     "description": "Send a webhook",
     "main": "index.ts",
     "config": [
@@ -8,7 +8,37 @@
             "key": "url",
             "name": "What is the webhook destination URL?",
             "type": "string",
+            "hint": "e.g. https://webhooks.example.com/1234",
             "default": "",
+            "required": true
+        },
+        {
+            "key": "headers",
+            "name": "Headers",
+            "type": "dictionary",
+            "required": false,
+            "secret": true
+        },
+        {
+            "key": "method",
+            "name": "HTTP Method",
+            "type": "choice",
+            "default": "POST",
+            "choices": [
+                "POST",
+                "GET",
+                "PUT",
+                "DELETE",
+                "PATCH"
+            ],
+            "required": true
+        },
+        {
+            "key": "payload",
+            "hint": "You can use {{ }} templates to add information from the event to the payload.",
+            "default": "{\n   \"event\": \"{{event}}\"\n}",
+            "name": "JSON Payload",
+            "type": "json",
             "required": true
         }
     ]
