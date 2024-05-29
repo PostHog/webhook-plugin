@@ -6,7 +6,7 @@ export function composeWebhook(event: PostHogEvent, { config }: any): Webhook {
         body: JSON.stringify(config.payload || event),
         headers: {
             'Content-Type': 'application/json',
-            ...config.headers,
+            ...(config.headers || {}),
         },
         method: config.method || 'POST',
     }
