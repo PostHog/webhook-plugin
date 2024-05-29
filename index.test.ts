@@ -32,7 +32,7 @@ describe('webhook plugin', () => {
         const webhook: Webhook = composeWebhook(event, {
             config: {
                 url: 'https://example.com',
-                payload: { my: 'payload' },
+                payload: JSON.stringify({ my: 'payload' }),
                 headers: {
                     'X-My-Header': 'my-value',
                 },
