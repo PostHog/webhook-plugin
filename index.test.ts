@@ -51,4 +51,38 @@ describe('webhook plugin', () => {
             }
         `)
     })
+
+    it('should base64 encode basic auth headers', () => {
+        let webhook: Webhook = composeWebhook(event, {
+            config: {
+                url: 'https://example.com',
+                headers: {
+                    Authorization: 'Basic user:password',
+                },
+            },
+        })
+        expect(webhook.headers?.Authorization).toMatchInlineSnapshot(`"Basic dXNlcjpwYXNzd29yZA=="`)
+
+        webhook = composeWebhook(event, {
+            config: {
+                url: 'https://example.com',
+                headers: {
+                    authorization: 'Basic user:password',
+                },
+            },
+        })
+        expect(webhook.headers?.authorization).toMatchInlineSnapshot(`"Basic dXNlcjpwYXNzd29yZA=="`)
+    })
+
+    it('should not base64 encode non basic auth headers', () => {
+        const webhook: Webhook = composeWebhook(event, {
+            config: {
+                url: 'https://example.com',
+                headers: {
+                    Authorization: 'Bearer user:password',
+                },
+            },
+        })
+        expect(webhook.headers?.Authorization).toMatchInlineSnapshot(`"Bearer user:password"`)
+    })
 })

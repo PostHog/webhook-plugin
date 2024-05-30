@@ -17,20 +17,15 @@
             "name": "Headers",
             "type": "dictionary",
             "required": false,
-            "secret": true
+            "secret": true,
+            "hint": "Add any headers you want to include in the request. Authorization header is treated specially and will be base64 encoded if specified as 'Basic user:password'."
         },
         {
             "key": "method",
             "name": "HTTP Method",
             "type": "choice",
             "default": "POST",
-            "choices": [
-                "POST",
-                "GET",
-                "PUT",
-                "DELETE",
-                "PATCH"
-            ],
+            "choices": ["POST", "GET", "PUT", "DELETE", "PATCH"],
             "required": true
         },
         {
