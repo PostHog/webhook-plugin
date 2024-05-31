@@ -10,7 +10,8 @@
             "type": "string",
             "hint": "e.g. https://webhooks.example.com/1234",
             "default": "",
-            "required": true
+            "required": true,
+            "templating": true
         },
         {
             "key": "headers",
@@ -18,7 +19,8 @@
             "type": "dictionary",
             "required": false,
             "secret": true,
-            "hint": "Headers to be include in the request. `Authorization` header is treated specially and will be base64 encoded if specified as `Basic user:password`."
+            "templating": true,
+            "hint": "Add any headers you want to include in the request. Authorization header is treated specially and will be base64 encoded if specified as 'Basic user:password'."
         },
         {
             "key": "method",
@@ -30,10 +32,10 @@
         },
         {
             "key": "payload",
-            "hint": "You can use {{ }} templates to add information from the event to the payload.",
             "default": "{\n   \"event\": \"{{event}}\"\n}",
             "name": "JSON Payload",
             "type": "json",
+            "templating": true,
             "required": true
         }
     ]
