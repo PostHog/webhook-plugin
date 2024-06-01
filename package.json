@@ -16,13 +16,16 @@
         "lint:fix": "eslint --fix .",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
+        "build": "rm -rf dist && esbuild index.ts --bundle --platform=node --target=node10.4 --outfile=dist/index.js",
         "prepublishOnly": "yarn test",
         "typecheck": "tsc"
     },
     "jest": {
         "testEnvironment": "node"
     },
-    "dependencies": {},
+    "dependencies": {
+        "@posthog/hogvm": "^1.0.3"
+    },
     "devDependencies": {
         "@posthog/plugin-contrib": "^0.0.3",
         "@posthog/plugin-scaffold": "^1.4.4",
@@ -30,6 +33,7 @@
         "@types/node-fetch": "^2.5.10",
         "@typescript-eslint/eslint-plugin": "^4.12.0",
         "@typescript-eslint/parser": "^4.12.0",
+        "esbuild": "^0.20.1",
         "eslint": "^7.21.0",
         "eslint-config-prettier": "^8.1.0",
         "eslint-plugin-import": "^2.22.1",

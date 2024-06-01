@@ -13,3 +13,9 @@ yarn install
 yarn typecheck
 yarn test
 ```
+
+## Update dist/index.js
+
+```
+npm i && npm run build && git add -f dist/
+```

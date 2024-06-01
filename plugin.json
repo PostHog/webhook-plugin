@@ -1,12 +1,20 @@
 {
-    "name": "Webhook",
-    "url": "https://github.com/PostHog/webhook-plugin",
+    "name": "Webhook Local Testing check it updated",
+    "url": "https://github.com/PostHog/webhook-plugin-local-testing",
     "description": "Send a webhook",
-    "main": "index.ts",
+    "main": "dist/index.js",
     "config": [
         {
             "key": "url",
             "name": "What is the webhook destination URL?",
+            "type": "string",
+            "default": "",
+            "required": true
+        },
+        {
+            "key": "bytecode",
+            "name": "Bytecode",
+            "hint": "e.g. [\"_h\", 33, 2, 33, 1, 6], [\"_h\", 32, \"event\", 1, 1], [\"_h\", 32, \"$browser\", 32, \"properties\", 32, \"event\", 1, 3] without the escaping",
             "type": "string",
             "default": "",
             "required": true
